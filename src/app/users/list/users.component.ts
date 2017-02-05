@@ -10,13 +10,13 @@ import {User} from '../user';
 })
 export class UsersComponent implements OnInit {
   title = "Hi all";
-  users: User[]; 
+  users: Promise<User[]>; 
 
   constructor(private userService: UserService) {  }
 
   getUsers(): void {
-    this.userService.getUsers().then(returnedUsers => this.users = returnedUsers);
-    //this.users = this.userService.getUsers();
+    //this.userService.getUsers().then(returnedUsers => this.users = returnedUsers);
+    this.users = this.userService.getUsers();
   }
 
   ngOnInit() {
